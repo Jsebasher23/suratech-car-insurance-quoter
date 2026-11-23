@@ -60,8 +60,10 @@ Spanish, English and Portuguese (runtime switch, same build).
   functions → 100 % unit-testable without TestBed.
 - State: one `QuoteStore` (signals) persisted to `sessionStorage` (ADR-0005).
 - Tests: Vitest for units (`*.spec.ts` next to the file), Playwright for e2e in `frontend/e2e/`.
-- Definition of Done: spec ACs all covered by ≥1 test, `npm run lint && npm test && npm run e2e`
-  green, review report has no open `blocker`/`major` findings, QA note written.
+- Definition of Done: `node tools/traceability.mjs --check` passes (every AC has ≥1 test — the
+  spec §8 tables are generated, never hand-written), `npm run lint && npm test && npm run e2e`
+  green (e2e also against the production build: `npm run preview:prod`), review report has no
+  open `blocker`/`major` findings, QA note written.
 
 ## 5. Skills available to agents
 

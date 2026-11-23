@@ -10,7 +10,7 @@ async function tabTo(page: Page, selector: string) {
   throw new Error(`Could not reach ${selector} with Tab`);
 }
 
-test('US-01-AC-12 completes the Chile wizard using only the keyboard', async ({ page }) => {
+test('US-01-AC-12 completes the wizard with keyboard only (Chile; US-02-AC-06 arrow keys in the plan group)', async ({ page }) => {
   await startFresh(page, '/cl/quote/data');
   const kb = page.keyboard;
 
