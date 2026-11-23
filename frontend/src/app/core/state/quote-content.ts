@@ -1,4 +1,5 @@
 import { Injectable, computed, inject } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { ContentApi } from '../api/content-api';
 import { CountryContext } from '../country/country-context';
 import { pricePlans } from '../domain/pricing';
@@ -24,9 +25,26 @@ export class QuoteContent {
     return c ? { code: c.code, currency: c.currency, lang: this.i18n.lang() } : undefined;
   });
 
-  readonly fields = asyncResource(this.key, (k) => this.api.formFields(k.code, k.lang));
-  readonly plans = asyncResource(this.key, (k) => this.api.plans(k.code, k.currency, k.lang));
-  readonly terms = asyncResource(this.key, (k) => this.api.terms(k.code, k.lang));
+  /** RV-09 — same country, new language: keep showing the old copy until the new one arrives. */
+  private readonly sameCountry = { keepPrevious: (a: { code: string }, b: { code: string }) => a.code === b.code };
+
+  readonly fields = asyncResource(this.key, (k) => this.api.formFields(k.code, k.lang), this.sameCountry);
+  readonly plans = asyncResource(this.key, (k) => this.api.plans(k.code, k.currency, k.lang), this.sameCountry);
+  readonly terms = asyncResource(this.key, (k) => this.api.terms(k.code, k.lang), this.sameCountry);
+
+  /**
+   * RV-03 / US-02 G-04 — bypass the cache and ask Strapi which plans are offered *now*.
+   * Returns false (and clears the selection) when the selected plan was withdrawn.
+   */
+  async revalidateSelectedPlan(): Promise<boolean> {
+    const k = this.key();
+    const code = this.store.planCode();
+    if (!k || !code) return false;
+    const fresh = await firstValueFrom(this.api.plans(k.code, k.currency, k.lang, { fresh: true }));
+    this.store.reconcilePlan(fresh.map((p) => p.code));
+    this.plans.reload(); // the cache now holds the fresh list
+    return fresh.some((p) => p.code === code);
+  }
 
   readonly pricedPlans = computed(() => {
     const plans = this.plans.value();

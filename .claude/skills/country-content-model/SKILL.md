@@ -20,7 +20,7 @@ breaks "Chilean user reading in English".
 ## Content types (backend/src/api)
 | Type | Localized attrs | Non-localized attrs |
 |---|---|---|
-| `country` | `name` | `code` (CO/CL, unique), `currency` (COP/CLP), `numberLocale` (es-CO), `flag`, `legalAge` |
+| `country` | `name` | `code` (CO/CL, unique), `currency` (any ISO 4217 code, e.g. COP/CLP), `numberLocale` (es-CO), `flag`, `legalAge` |
 | `form-field` | `label`, `helpText`, `errorMessage`, `placeholder`, `options[].label` | `key`, `type`, `section`, `required`, `order`, `validation{…}`, `options[].value`, `country` |
 | `plan` | `name`, `shortDescription`, `coverages[]`, `benefits[]`, `badge` | `code`, `basePrice`, `currency`, `order`, `recommended`, `active`, `country` |
 | `legal-term` | `title`, `body` | `version`, `country` |
@@ -46,7 +46,7 @@ Non-localized attributes are shared across locales automatically by Strapi 5
 | `pattern` | text | JS regex source, anchored automatically |
 | `min`/`max` | number | numeric range |
 | `minYearOffset`/`maxYearOffset` | number (year) | `currentYear+min ≤ v ≤ currentYear+max` (vehicle year: −20…+1) |
-| `minAgeYears` | date | completed years at today ≥ value (legal age) |
+| `minAgeYears` | date | completed years at today ≥ value. For `role = birthDate` leave it empty: `country.legalAge` applies (RV-08) |
 | `validator` | text | named algorithm: `rut`, `co-document`, `plate-co`, `plate-cl`, `email` |
 
 ## Recipe: add a new country

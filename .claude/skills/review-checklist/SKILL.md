@@ -27,6 +27,8 @@ Severities: **blocker** (AC broken, security hole) · **major** (likely bug, mis
 - [ ] Unknown field type from Strapi degrades gracefully (skipped + logged), never crashes.
 ### Security & privacy
 - [ ] No token / secret in `frontend/` or `environment*.ts`; Public role read-only.
+- [ ] CSP compatible with the production `index.html` (no inline handlers); headers on all responses.
+- [ ] Every file the README asks to run is committed (`git status` clean) — lesson from RV-04.
 - [ ] Document number masked in summary; no PII in `console.*`.
 - [ ] No `innerHTML` with CMS content (or it is sanitized).
 ### Angular quality
@@ -38,4 +40,6 @@ Severities: **blocker** (AC broken, security hole) · **major** (likely bug, mis
 - [ ] Keyboard-only path through the whole wizard (e2e covers it).
 - [ ] Layout works at 360 px and ≥ 1280 px.
 ### Tests
+- [ ] `node tools/traceability.mjs --check` passes; e2e was run against the production build
+      (`npm run preview:prod` or the nginx image), not only `ng serve` (lesson from RV-01).
 - [ ] Tests assert behaviour, not implementation; boundaries covered; no skipped tests.

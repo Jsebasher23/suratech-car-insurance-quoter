@@ -53,6 +53,7 @@ export const es = {
   'plans.factor.vehicleAge': 'Antigüedad del vehículo: {years} años × {factor}',
   'plans.factor.driverAge': 'Edad del conductor: {years} años × {factor}',
   'plans.factor.none': 'Sin ajustes: se aplica el precio base.',
+  'plans.withdrawn': 'El plan que habías elegido ya no está disponible. Elige otro para continuar.',
   'plans.selectToContinue': 'Elige un plan para continuar.',
 
   'summary.title': 'Revisa y paga',

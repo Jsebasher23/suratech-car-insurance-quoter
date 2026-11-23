@@ -54,6 +54,7 @@ export const en: Dictionary = {
   'plans.factor.vehicleAge': 'Vehicle age: {years} years × {factor}',
   'plans.factor.driverAge': 'Driver age: {years} years × {factor}',
   'plans.factor.none': 'No adjustments: the base price applies.',
+  'plans.withdrawn': 'The plan you had chosen is no longer available. Choose another one to continue.',
   'plans.selectToContinue': 'Choose a plan to continue.',
 
   'summary.title': 'Review and pay',

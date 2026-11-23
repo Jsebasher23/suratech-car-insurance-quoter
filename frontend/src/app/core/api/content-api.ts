@@ -41,8 +41,11 @@ export class ContentApi {
     );
   }
 
-  plans(countryCode: string, currency: CurrencyCode, locale: Language): Observable<Plan[]> {
-    return this.cached(`plans|${countryCode}|${locale}`, () =>
+  /** `fresh: true` skips (and replaces) the cached entry — used right before paying (RV-03). */
+  plans(countryCode: string, currency: CurrencyCode, locale: Language, opts: { fresh?: boolean } = {}): Observable<Plan[]> {
+    const key = `plans|${countryCode}|${locale}`;
+    if (opts.fresh) this.cache.delete(key);
+    return this.cached(key, () =>
       this.localized<PlanDto>(
         'plans',
         { ...countryFilter(countryCode), 'filters[active][$eq]': 'true', 'sort[0]': 'order:asc', populate: '*' },

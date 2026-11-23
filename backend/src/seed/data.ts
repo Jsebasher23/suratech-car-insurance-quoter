@@ -26,7 +26,7 @@ const same = (values: string[]): Localized<Option[]> => opts(values, { es: value
 
 /* ───────────────────────────── Countries ───────────────────────────── */
 export const countries: SeedEntry<
-  { code: string; currency: 'COP' | 'CLP'; numberLocale: string; legalAge: number; flag: string; order: number },
+  { code: string; currency: string; numberLocale: string; legalAge: number; flag: string; order: number },
   { name: string }
 >[] = [
   {
@@ -67,7 +67,7 @@ const fullName = (order: number): FieldSeed => ({
   },
 });
 const birthDate = (order: number): FieldSeed => ({
-  shared: { key: 'birthDate', type: 'date', section: 'policyholder', role: 'birthDate', required: true, order, validation: { minAgeYears: 18 } },
+  shared: { key: 'birthDate', type: 'date', section: 'policyholder', role: 'birthDate', required: true, order },
   i18n: {
     es: { label: 'Fecha de nacimiento', helpText: 'Debes ser mayor de edad para contratar.', errorMessage: 'Debes tener al menos 18 años.', requiredMessage: 'Indica tu fecha de nacimiento.' },
     en: { label: 'Date of birth', helpText: 'You must be of legal age to buy a policy.', errorMessage: 'You must be at least 18 years old.', requiredMessage: 'Enter your date of birth.' },
@@ -240,7 +240,7 @@ export const formFields: Record<string, FieldSeed[]> = {
 };
 
 /* ───────────────────────────── Plans ───────────────────────────── */
-type PlanShared = { code: string; basePrice: number; currency: 'COP' | 'CLP'; order: number; recommended: boolean; active: boolean };
+type PlanShared = { code: string; basePrice: number; currency: string; order: number; recommended: boolean; active: boolean };
 type PlanText = {
   name: string;
   shortDescription: string;

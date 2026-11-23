@@ -17,7 +17,9 @@ export class CountryContext {
   private readonly code = signal<string | null>(null);
 
   /** Countries in the active language (names are localized). */
-  readonly countries = asyncResource(() => this.i18n.lang(), (lang) => this.api.countries(lang));
+  readonly countries = asyncResource(() => this.i18n.lang(), (lang) => this.api.countries(lang), {
+    keepPrevious: () => true, // RV-09: the current country never becomes null during a language switch
+  });
 
   readonly country = computed<Country | null>(() => {
     const code = this.code();

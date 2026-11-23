@@ -22,7 +22,7 @@ export const CO_FIELDS: FormFieldConfig[] = [
   field({ key: 'fullName', label: 'Nombre completo', role: 'fullName', required: true, order: 10, validation: { minLength: 3 }, errorMessage: 'Escribe tu nombre completo.', requiredMessage: 'El nombre es obligatorio.' }),
   field({ key: 'documentType', label: 'Tipo de documento', type: 'select', role: 'documentType', required: true, order: 20, options: [{ value: 'CC', label: 'Cédula de ciudadanía' }, { value: 'CE', label: 'Cédula de extranjería' }], errorMessage: 'Selecciona tu tipo de documento.' }),
   field({ key: 'documentNumber', label: 'Número de documento', role: 'documentNumber', required: true, order: 30, validation: { validator: 'co-document' }, errorMessage: 'El documento debe tener entre 6 y 10 dígitos.', helpText: 'Solo números.' }),
-  field({ key: 'birthDate', label: 'Fecha de nacimiento', type: 'date', role: 'birthDate', required: true, order: 40, validation: { minAgeYears: 18 }, errorMessage: 'Debes tener al menos 18 años.' }),
+  field({ key: 'birthDate', label: 'Fecha de nacimiento', type: 'date', role: 'birthDate', required: true, order: 40, errorMessage: 'Debes tener al menos 18 años.' }),
   field({ key: 'consent', label: 'Autorizo', type: 'checkbox', required: true, order: 50, errorMessage: 'Debes autorizar.' }),
   field({ key: 'plate', label: 'Placa', section: 'vehicle', role: 'vehiclePlate', required: true, order: 10, validation: { validator: 'plate-co' }, errorMessage: 'Placa inválida.' }),
   field({ key: 'vehicleYear', label: 'Año', type: 'number', section: 'vehicle', role: 'vehicleYear', required: true, order: 20, validation: { minYearOffset: -20, maxYearOffset: 1 }, errorMessage: 'Año fuera de rango.' }),

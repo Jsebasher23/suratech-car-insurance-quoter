@@ -39,12 +39,11 @@
       }
     },
     "currency": {
-      "type": "enumeration",
-      "enum": [
-        "COP",
-        "CLP"
-      ],
+      "type": "string",
       "required": true,
+      "regex": "^[A-Z]{3}$",
+      "maxLength": 3,
+      "minLength": 3,
       "pluginOptions": {
         "i18n": {
           "localized": false

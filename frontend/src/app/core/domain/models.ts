@@ -56,7 +56,8 @@ export interface FormFieldConfig {
   options: FieldOption[];
 }
 
-export type CurrencyCode = 'COP' | 'CLP';
+/** Any ISO 4217 code; a new market's currency is content, not code (ADR-0001, RV-05). */
+export type CurrencyCode = string;
 
 export interface Country {
   code: string;
