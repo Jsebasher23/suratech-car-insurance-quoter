@@ -19,7 +19,10 @@
   background: var(--signal); color: var(--signal-ink); border: 2px solid var(--ink); border-bottom-width: 0;
   font-weight: 700; font-size: var(--fs-sm);
 }
-.plan__head { display: flex; align-items: center; gap: 12px; }
+.plan__head { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.plan__head::after { content: ''; position: absolute; inset: 0; z-index: 1; border-radius: inherit; } /* stretched label, above positioned list items */
+.plan__price, .plan__desc { margin: 0; }
+h3.plan__h { font-family: var(--font-body); margin: 6px 0 0; }
 .plan__radio { width: 22px; height: 22px; margin: 0; accent-color: var(--route); flex: none; }
 .plan__radio:focus-visible { box-shadow: none; outline: none; }
 .plan__name { font: 750 var(--fs-xl)/1.1 var(--font-display); }

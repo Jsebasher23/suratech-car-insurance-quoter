@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, computed, effect, inject, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, computed, effect, inject, signal, untracked, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountryContext } from '../../core/country/country-context';
 import { buildSummary } from '../../core/domain/summary';
@@ -32,6 +32,9 @@ export class SummaryStep {
   protected readonly country = inject(CountryContext).country;
 
   protected readonly outcome = signal<SandboxOutcome>('approve');
+  /** true while we re-check with Strapi that the plan is still offered (RV-03) */
+  protected readonly verifying = signal(false);
+  protected readonly busy = computed(() => this.verifying() || this.store.isProcessing());
 
   protected readonly sectionLabel: Record<string, TranslationKey> = {
     policyholder: 'data.section.policyholder',
@@ -59,7 +62,7 @@ export class SummaryStep {
       !!this.terms.value() &&
       !!this.plan() &&
       this.store.termsAccepted() &&
-      !this.store.isProcessing() &&
+      !this.busy() &&
       this.store.payment().status !== 'paid',
   );
 
@@ -70,14 +73,22 @@ export class SummaryStep {
   });
 
   constructor() {
+    // US-02 G-04: entering the summary re-checks the offer against Strapi (not only the cache),
+    // once the country is resolved (it may not be yet on a cold load of /summary).
+    let revalidated = false;
+    effect(() => {
+      if (revalidated || !this.country()) return;
+      revalidated = true;
+      untracked(() => void this.content.revalidateSelectedPlan().catch(() => undefined));
+    });
     effect(() => {
       const t = this.terms.state();
-      if (t.status === 'success') this.store.syncTermsVersion(t.value?.version ?? null);
+      if (t.status === 'success') untracked(() => this.store.syncTermsVersion(t.value?.version ?? null)); // RV-16
     });
     // a plan withdrawn while on the summary → back to plans
     effect(() => {
-      if (this.content.pricedPlans() && !this.plan() && !this.store.confirmation()) {
-        void this.router.navigate(['../plans'], { relativeTo: this.route });
+      if (this.content.pricedPlans() && !this.plan() && !untracked(() => this.store.confirmation())) {
+        void this.router.navigate(['../plans'], { relativeTo: this.route, queryParams: { withdrawn: 1 } });
       }
     });
     afterNextRender(() => this.heading()?.nativeElement.focus());
@@ -95,6 +106,20 @@ export class SummaryStep {
     const p = this.plan();
     const c = this.country();
     if (!p || !c || !this.canPay()) return;
+    // RV-03 / US-02 G-04: never charge a plan that business withdrew while the user was here
+    this.verifying.set(true);
+    let stillOffered: boolean;
+    try {
+      stillOffered = await this.content.revalidateSelectedPlan();
+    } catch {
+      stillOffered = true; // Strapi unreachable: the gateway (server side in a real system) re-validates
+    } finally {
+      this.verifying.set(false);
+    }
+    if (!stillOffered) {
+      await this.router.navigate(['../plans'], { relativeTo: this.route, queryParams: { withdrawn: 1 } });
+      return;
+    }
     await this.store.pay(
       this.gateway,
       { countryCode: c.code, planCode: p.code, amount: p.finalPrice, currency: c.currency, outcome: this.outcome() },

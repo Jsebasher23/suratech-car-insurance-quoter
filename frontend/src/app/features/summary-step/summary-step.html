@@ -53,7 +53,7 @@
             </div>
             <div class="accept">
               <input id="accept-terms" type="checkbox" [checked]="store.termsAccepted()" (change)="onAccept($event)"
-                [disabled]="store.isProcessing()" data-testid="accept-terms" />
+                [disabled]="busy()" data-testid="accept-terms" />
               <label for="accept-terms">{{ 'summary.terms.accept' | t }}</label>
             </div>
           } @else {
@@ -68,7 +68,7 @@
       <h2 id="pay-title" class="visually-hidden">{{ 'summary.pay' | t: { price: priceLabel() } }}</h2>
       <div class="sandbox">
         <label for="sandbox">{{ 'summary.sandbox.label' | t }}</label>
-        <select id="sandbox" class="control" (change)="onOutcome($event)" [disabled]="store.isProcessing()" data-testid="sandbox-outcome" aria-describedby="sandbox-hint">
+        <select id="sandbox" class="control" (change)="onOutcome($event)" [disabled]="busy()" data-testid="sandbox-outcome" aria-describedby="sandbox-hint">
           <option value="approve" [selected]="outcome() === 'approve'">{{ 'summary.sandbox.approve' | t }}</option>
           <option value="decline" [selected]="outcome() === 'decline'">{{ 'summary.sandbox.decline' | t }}</option>
         </select>
@@ -82,13 +82,14 @@
       }
 
       <div class="actions">
-        <button type="button" class="btn btn--ghost" (click)="go('plans')" [disabled]="store.isProcessing()">{{ 'wizard.back' | t }}</button>
-        @if (!store.termsAccepted() && terms.value()) {
+        <button type="button" class="btn btn--ghost" (click)="go('plans')" [disabled]="busy()">{{ 'wizard.back' | t }}</button>
+        @let showHint = !store.termsAccepted() && !!terms.value();
+        @if (showHint) {
           <span class="hint" id="pay-hint">{{ 'summary.acceptToPay' | t }}</span>
         }
         <button type="button" class="btn btn--pay" data-testid="pay" (click)="pay()" [disabled]="!canPay()"
-          [attr.aria-busy]="store.isProcessing()" [attr.aria-describedby]="canPay() ? null : 'pay-hint'">
-          @if (store.isProcessing()) {
+          [attr.aria-busy]="busy()" [attr.aria-describedby]="showHint ? 'pay-hint' : null">
+          @if (busy()) {
             <span class="spinner" aria-hidden="true"></span>{{ 'summary.processing' | t }}
           } @else {
             {{ 'summary.pay' | t: { price: priceLabel() } }}

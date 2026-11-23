@@ -1,4 +1,5 @@
-<a class="skip" href="#main">{{ 'app.skipToContent' | t }}</a>
+<!-- RV-02: handled in code; a bare href="#main" resolves against <base href="/"> and leaves the wizard -->
+<a class="skip" [href]="currentUrl() + '#main'" (click)="skipToMain($event, main)" data-testid="skip-link">{{ 'app.skipToContent' | t }}</a>
 
 <header class="top no-print">
   <div class="top__inner">
@@ -23,7 +24,7 @@
   </div>
 </header>
 
-<main id="main" class="main">
+<main id="main" class="main" #main tabindex="-1">
   <router-outlet />
 </main>
 

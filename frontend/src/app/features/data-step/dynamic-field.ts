@@ -61,7 +61,10 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
       @if (f.helpText) {
         <p class="field__help" [id]="id() + '-help'">{{ f.helpText }}</p>
       }
-      <p class="field__error" [id]="id() + '-error'" role="alert" [attr.data-testid]="'error-' + f.key">
+      <!-- RV-11: no role="alert" per field (a submit would fire one announcement per field).
+           The form-level alert announces once and focus moves to the first invalid control,
+           whose error is read through aria-describedby. -->
+      <p class="field__error" [id]="id() + '-error'" [attr.data-testid]="'error-' + f.key">
         @if (invalid) {
           <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M8 4v5M8 11v1" stroke="#fff" stroke-width="2"/></svg>
           {{ message() }}

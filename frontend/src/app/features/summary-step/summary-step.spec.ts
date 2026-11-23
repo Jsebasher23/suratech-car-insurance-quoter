@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { PaymentGateway, PaymentRequest, PaymentResult } from '../../core/payment/payment-gateway';
+import { PaymentDeclinedError, PaymentGateway, PaymentRequest, PaymentResult } from '../../core/payment/payment-gateway';
 import { CO_FIELDS, CO_PLANS, CO_TERMS, VALID_CO_VALUES } from '../../../testing/fixtures';
 import { setupStep } from '../../../testing/harness';
 import { SummaryStep } from './summary-step';
@@ -8,23 +8,28 @@ import { SummaryStep } from './summary-step';
 class PendingGateway extends PaymentGateway {
   calls: PaymentRequest[] = [];
   resolve?: (r: PaymentResult) => void;
+  reject?: (e: unknown) => void;
   charge(req: PaymentRequest) {
     this.calls.push(req);
-    return new Promise<PaymentResult>((r) => (this.resolve = r));
+    return new Promise<PaymentResult>((res, rej) => {
+      this.resolve = res;
+      this.reject = rej;
+    });
   }
 }
+const flush = () => new Promise((r) => setTimeout(r, 0));
 
 async function render() {
   const gw = new PendingGateway();
   const ctx = await setupStep([{ provide: PaymentGateway, useValue: gw }]);
   ctx.store.setFormValues(VALID_CO_VALUES, true);
   ctx.store.selectPlan('CO-PLUS');
-  vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
+  const nav = vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
   const fixture = TestBed.createComponent(SummaryStep);
   const el: HTMLElement = fixture.nativeElement;
   const settle = async () => { fixture.detectChanges(); await fixture.whenStable(); };
   await settle();
-  return { ...ctx, gw, el, settle };
+  return { ...ctx, gw, el, settle, nav };
 }
 const pay = (el: HTMLElement) => el.querySelector<HTMLButtonElement>('[data-testid=pay]')!;
 
@@ -68,6 +73,7 @@ describe('SummaryStep (US-03)', () => {
     el.querySelector<HTMLInputElement>('[data-testid=accept-terms]')!.click();
     await settle();
     pay(el).click();
+    await flush(); // plan re-validation (RV-03) resolves, then the gateway is called
     await settle();
     expect(pay(el).disabled).toBe(true);
     expect(pay(el).getAttribute('aria-busy')).toBe('true');
@@ -85,5 +91,47 @@ describe('SummaryStep (US-03)', () => {
     await settle();
     expect(el.querySelector('[data-testid=terms-missing]')).not.toBeNull();
     expect(pay(el).disabled).toBe(true);
+  });
+
+  it('US-03-AC-10 a declined payment shows a focused alert and keeps the data for a retry', async () => {
+    const { el, api, gw, store, settle } = await render();
+    api.emitDefaults();
+    await settle();
+    document.body.appendChild(el);
+    el.querySelector<HTMLInputElement>('[data-testid=accept-terms]')!.click();
+    await settle();
+    pay(el).click();
+    await flush();
+    gw.reject!(new PaymentDeclinedError());
+    await flush();
+    await settle();
+    await new Promise((r) => setTimeout(r, 5)); // focus is moved after render
+    const alert = el.querySelector<HTMLElement>('[data-testid=payment-error]')!;
+    expect(alert.getAttribute('role')).toBe('alert');
+    expect(alert.textContent).toContain('rechazado');
+    expect(document.activeElement).toBe(alert);
+    expect(store.formValues()).toEqual(VALID_CO_VALUES);
+    expect(pay(el).disabled).toBe(false); // retry possible
+    el.remove();
+  });
+
+  it('US-02-AC-13 / RV-03 a plan withdrawn in Strapi while on the summary is never charged', async () => {
+    const { el, api, gw, store, settle, nav } = await render();
+    api.emitDefaults();
+    await settle();
+    el.querySelector<HTMLInputElement>('[data-testid=accept-terms]')!.click();
+    await settle();
+    api.freshPlans = CO_PLANS.filter((p) => p.code !== 'CO-PLUS'); // business unpublished CO-PLUS
+    pay(el).click();
+    await flush();
+    await settle();
+    expect(gw.calls).toHaveLength(0);
+    expect(store.planCode()).toBeNull();
+    expect(nav).toHaveBeenCalledWith(['../plans'], expect.objectContaining({ queryParams: { withdrawn: 1 } }));
+  });
+
+  it('US-02 G-04 entering the summary re-validates the plans against Strapi (cache bypass)', async () => {
+    const { api } = await render();
+    expect(api.freshCalls).toBeGreaterThan(0);
   });
 });

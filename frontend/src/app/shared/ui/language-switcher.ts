@@ -3,7 +3,10 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { LANGUAGES, LANGUAGE_META, Language } from '../../core/i18n/languages';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 
-/** US-04-AC-01 — segmented control; each option is announced in its own language. */
+/**
+ * US-04-AC-01 — segmented control; each option is announced in its own language.
+ * RV-12: the accessible name starts with the visible text ("PT – Português", WCAG 2.5.3).
+ */
 @Component({
   selector: 'app-language-switcher',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,7 +19,7 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
           class="switch__opt"
           [attr.lang]="meta[l].tag"
           [attr.aria-pressed]="i18n.lang() === l"
-          [attr.aria-label]="meta[l].native"
+          [attr.aria-label]="l.toUpperCase() + ' – ' + meta[l].native"
           [attr.data-testid]="'lang-' + l"
           (click)="choose(l)"
         >

@@ -4,14 +4,14 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { LanguageSwitcher } from './language-switcher';
 
 describe('LanguageSwitcher', () => {
-  it('US-04-AC-01 offers ES/EN/PT named in their own language, as toggle buttons', async () => {
+  it('US-04-AC-01 offers ES/EN/PT named in their own language, as toggle buttons (RV-12 label in name)', async () => {
     localStorage.setItem('ciq.lang', 'es');
     TestBed.configureTestingModule({ providers: [provideZonelessChangeDetection()] });
     const fixture = TestBed.createComponent(LanguageSwitcher);
     await fixture.whenStable();
     const el: HTMLElement = fixture.nativeElement;
     const buttons = [...el.querySelectorAll('button')];
-    expect(buttons.map((b) => b.getAttribute('aria-label'))).toEqual(['Español', 'English', 'Português']);
+    expect(buttons.map((b) => b.getAttribute('aria-label'))).toEqual(['ES – Español', 'EN – English', 'PT – Português']);
     expect(buttons[0].getAttribute('aria-pressed')).toBe('true');
 
     buttons[2].click();

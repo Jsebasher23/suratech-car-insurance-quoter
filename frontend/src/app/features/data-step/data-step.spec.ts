@@ -89,4 +89,31 @@ describe('DataStep (US-01)', () => {
     await settle();
     expect(nav).toHaveBeenCalledWith(['../plans'], expect.anything());
   });
+
+  it('US-04-AC-04 / RV-09 a language switch updates labels but keeps the form, values and shown errors', async () => {
+    const { el, api, settle } = await render();
+    api.fields$.next(CO_FIELDS);
+    await settle();
+    const input = el.querySelector<HTMLInputElement>('#f-documentNumber')!;
+    input.value = '12';
+    input.dispatchEvent(new Event('input'));
+    input.dispatchEvent(new Event('blur'));
+    await settle();
+    // Strapi answers in English: same structure, new labels
+    api.fields$.next(CO_FIELDS.map((f) => ({ ...f, label: `${f.label} (EN)`, errorMessage: 'EN error' })));
+    await settle();
+    const after = el.querySelector<HTMLInputElement>('#f-documentNumber')!;
+    expect(after.value).toBe('12');
+    expect(el.querySelector('label[for="f-documentNumber"]')!.textContent).toContain('(EN)');
+    expect(el.querySelector('#f-documentNumber-error')!.textContent).toContain('EN error'); // still touched
+  });
+
+  it('RV-11 field errors are not individual live regions (one announcement per submit)', async () => {
+    const { el, api, settle } = await render();
+    api.fields$.next(CO_FIELDS);
+    await settle();
+    (el.querySelector('[data-testid=continue]') as HTMLButtonElement).click();
+    await settle();
+    expect(el.querySelectorAll('[role=alert]').length).toBe(1);
+  });
 });

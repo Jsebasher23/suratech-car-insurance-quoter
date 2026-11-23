@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, computed, effect, inject, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, computed, effect, inject, input, untracked, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountryContext } from '../../core/country/country-context';
 import { MoneyPipe } from '../../core/format/money.pipe';
@@ -30,45 +30,50 @@ import { Skeleton } from '../../shared/ui/skeleton';
         <p>{{ 'plans.empty.body' | t }}</p>
       </div>
     } @else if (country(); as c) {
+      @if (withdrawn()) {
+        <p class="alert alert--info" role="status" data-testid="plan-withdrawn">{{ 'plans.withdrawn' | t }}</p>
+      }
       <fieldset class="plans">
         <legend class="visually-hidden">{{ 'plans.title' | t }}</legend>
         @for (p of plans(); track p.code) {
-          <label class="plan" [class.plan--featured]="p.highlighted" [class.plan--chosen]="p.code === selected()" [attr.data-testid]="'plan-' + p.code">
+          <!-- RV-18: the card is a div; only the radio + name are inside the <label>; the label is
+               stretched over the card (CSS) so clicking anywhere selects, with no extra handlers -->
+          <div class="plan" [class.plan--featured]="p.highlighted" [class.plan--chosen]="p.code === selected()" [attr.data-testid]="'plan-' + p.code">
             @if (p.highlighted) {
-              <span class="plan__flag" data-testid="recommended-badge">{{ p.badge || ('plans.recommended' | t) }}</span>
+              <span class="plan__flag" data-testid="recommended-badge" aria-hidden="true">{{ p.badge || ('plans.recommended' | t) }}</span>
             }
-            <span class="plan__head">
+            <label class="plan__head">
               <input type="radio" name="plan" class="plan__radio" [value]="p.code" [checked]="p.code === selected()" (change)="choose(p.code)"
-                [attr.aria-labelledby]="'plan-name-' + p.code" [attr.aria-describedby]="'plan-desc-' + p.code" />
+                [attr.aria-describedby]="'plan-desc-' + p.code" />
               <span class="plan__name" [id]="'plan-name-' + p.code">
                 {{ p.name }}
                 @if (p.highlighted) {<span class="visually-hidden">— {{ p.badge || ('plans.recommended' | t) }}</span>}
               </span>
-            </span>
-            <span class="plan__price">
+            </label>
+            <p class="plan__price">
               <strong data-testid="plan-price">{{ p.finalPrice | money: c.currency : c.numberLocale }}</strong>
               <span>{{ 'plans.perMonth' | t }}</span>
-            </span>
-            <span class="plan__desc" [id]="'plan-desc-' + p.code">{{ p.shortDescription }}</span>
+            </p>
+            <p class="plan__desc" [id]="'plan-desc-' + p.code">{{ p.shortDescription }}</p>
 
             @if (p.coverages.length) {
-              <span class="plan__h">{{ 'plans.coverages' | t }}</span>
+              <h3 class="plan__h">{{ 'plans.coverages' | t }}</h3>
               <ul class="plan__list">
-                @for (cv of p.coverages; track cv.name) {
+                @for (cv of p.coverages; track $index) {
                   <li><span>{{ cv.name }}</span>@if (cv.detail) {<small>{{ cv.detail }}</small>}</li>
                 }
               </ul>
             }
             @if (p.benefits.length) {
-              <span class="plan__h">{{ 'plans.benefits' | t }}</span>
+              <h3 class="plan__h">{{ 'plans.benefits' | t }}</h3>
               <ul class="plan__list plan__list--plus">
-                @for (b of p.benefits; track b) { <li>{{ b }}</li> }
+                @for (b of p.benefits; track $index) { <li>{{ b }}</li> }
               </ul>
             }
             @if (p.code === selected()) {
               <span class="plan__chosen" aria-hidden="true">✓ {{ 'plans.selected' | t }}</span>
             }
-          </label>
+          </div>
         }
       </fieldset>
 
@@ -88,11 +93,12 @@ import { Skeleton } from '../../shared/ui/skeleton';
 
     <div class="actions">
       <button type="button" class="btn btn--ghost" (click)="back()" data-testid="back">{{ 'wizard.back' | t }}</button>
-      @if (state() === 'success' && plans().length > 0 && !selected()) {
+      @let showHint = state() === 'success' && plans().length > 0 && !selected();
+      @if (showHint) {
         <span class="hint" id="plans-hint">{{ 'plans.selectToContinue' | t }}</span>
       }
       <button type="button" class="btn" data-testid="continue" [disabled]="!canContinue()" (click)="next()"
-        [attr.aria-describedby]="canContinue() ? null : 'plans-hint'">
+        [attr.aria-describedby]="showHint ? 'plans-hint' : null">
         {{ 'wizard.continue' | t }}
       </button>
     </div>
@@ -106,6 +112,8 @@ export class PlansStep {
   private readonly route = inject(ActivatedRoute);
   private readonly heading = viewChild<ElementRef<HTMLElement>>('heading');
   protected readonly country = inject(CountryContext).country;
+  /** `?withdrawn=1` when the summary found the chosen plan was withdrawn (US-02 G-04) */
+  readonly withdrawn = input<string>();
 
   protected readonly state = computed(() => {
     const a = this.content.plans.state().status;
@@ -119,7 +127,9 @@ export class PlansStep {
   constructor() {
     // US-02-AC-13 — a plan withdrawn in Strapi is unselected
     effect(() => {
-      if (this.state() === 'success') this.store.reconcilePlan(this.plans().map((p) => p.code));
+      if (this.state() !== 'success') return;
+      const codes = this.plans().map((p) => p.code);
+      untracked(() => this.store.reconcilePlan(codes)); // RV-16: do not track the whole store
     });
     afterNextRender(() => this.heading()?.nativeElement.focus());
   }

@@ -71,4 +71,25 @@ describe('PlansStep (US-02)', () => {
     const price = el.querySelector('[data-testid=plan-CO-PLUS] [data-testid=plan-price]')!.textContent!.replace(/\s/g, ' ');
     expect(price).toBe('$ 149.900'); // vehicle 5 y, driver 36 y → factors 1.0
   });
+
+  it('US-02-AC-09 the "Why this price?" disclosure lists the factors applied', async () => {
+    const { el, api, store, settle } = await render();
+    store.setFormValues({ ...VALID_CO_VALUES, vehicleYear: 2012, birthDate: '2004-01-01' }, true);
+    api.fields$.next(CO_FIELDS);
+    api.plans$.next(CO_PLANS);
+    await settle();
+    const why = el.querySelector('details.why')!;
+    expect(why.querySelector('summary')?.textContent).toContain('¿Cómo calculamos este precio?');
+    const items = [...why.querySelectorAll('li')].map((li) => li.textContent?.trim());
+    expect(items).toEqual(['Antigüedad del vehículo: 14 años × 1.25', 'Edad del conductor: 22 años × 1.20']);
+    expect(el.querySelector('[data-testid=plan-CO-BASIC] [data-testid=plan-price]')!.textContent!.replace(/\s/g, ' ')).toBe('$ 134.900');
+  });
+
+  it('US-02 G-04 explains why the selection was cleared when the plan was withdrawn', async () => {
+    const { el, api, settle } = await render();
+    api.fields$.next(CO_FIELDS);
+    api.plans$.next(CO_PLANS);
+    await settle();
+    expect(el.querySelector('[data-testid=plan-withdrawn]')).toBeNull();
+  });
 });
