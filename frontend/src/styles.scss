@@ -1,0 +1,190 @@
+/*
+ * Ruta Segura — design tokens
+ * Concept: the road-sign + registration-plate world. Calm navy "policy ink" on cool paper,
+ * one loud element: the signal-yellow licence plate / recommended plan. Everything else quiet.
+ */
+@use '@fontsource-variable/bricolage-grotesque';
+@use '@fontsource-variable/instrument-sans';
+
+:root {
+  --ink: #142342;          /* policy ink — text, primary surfaces */
+  --ink-soft: #46536b;     /* secondary text (≥ 7:1 on paper) */
+  --paper: #f3f5f8;        /* page */
+  --card: #ffffff;
+  --line: #d5dbe5;
+  --route: #1d5fd1;        /* interactive / focus (5.6:1 on white) */
+  --signal: #ffc531;       /* road-sign yellow — the single loud colour */
+  --signal-ink: #3a2a00;
+  --danger: #b4231a;
+  --danger-bg: #fdecea;
+  --ok: #17784b;
+  --ok-bg: #e7f5ee;
+
+  --font-display: 'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Instrument Sans Variable', 'Segoe UI', system-ui, sans-serif;
+
+  /* modular scale 1.25 */
+  --fs-xs: 0.8rem;
+  --fs-sm: 0.9rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.563rem;
+  --fs-2xl: 1.953rem;
+  --fs-3xl: 2.441rem;
+
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --space: 8px;
+  --shadow-lift: 0 1px 0 var(--line), 0 12px 24px -16px rgb(20 35 66 / 0.35);
+  --focus: 0 0 0 3px var(--card), 0 0 0 6px var(--route);
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 calc(var(--space) * 1.5);
+  font-weight: 700;
+}
+h1 { font-size: clamp(var(--fs-xl), 4vw, var(--fs-3xl)); font-weight: 750; }
+h2 { font-size: var(--fs-lg); }
+h3 { font-size: var(--fs-md); }
+h1:focus { outline: none; }
+h1:focus-visible { box-shadow: var(--focus); border-radius: var(--r-sm); }
+
+p { margin: 0 0 var(--space); max-width: 68ch; }
+a { color: var(--route); text-underline-offset: 3px; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.lead {
+  color: var(--ink-soft);
+  font-size: var(--fs-lg);
+  margin-bottom: calc(var(--space) * 4);
+}
+
+/* ── Buttons ─────────────────────────────── */
+.btn {
+  --bg: var(--ink);
+  --fg: #fff;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  min-height: 48px;
+  padding: 0 calc(var(--space) * 3);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 600 var(--fs-md) / 1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.btn:hover:not(:disabled) { transform: translateY(-1px); }
+.btn:disabled,
+.btn[aria-disabled='true'] { --bg: #8b95a7; cursor: not-allowed; }
+.btn--ghost { --fg: var(--ink); background: transparent; border-color: var(--line); }
+.btn--ghost:hover:not(:disabled) { border-color: var(--ink); }
+.btn--link {
+  min-height: 44px;
+  padding: 0 var(--space);
+  border: 0;
+  background: none;
+  color: var(--route);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 1.5);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: calc(var(--space) * 4);
+  padding-top: calc(var(--space) * 3);
+  border-top: 1px solid var(--line);
+}
+.actions > :last-child { margin-left: auto; }
+
+/* ── Form controls ───────────────────────── */
+.control {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1.5px solid #9aa5b8;
+  border-radius: var(--r-sm);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+}
+.control:hover { border-color: var(--ink-soft); }
+.control:focus-visible { border-color: var(--route); }
+.control[aria-invalid='true'] { border-color: var(--danger); background: #fffafa; }
+
+.alert {
+  display: flex;
+  gap: var(--space);
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border-radius: var(--r-sm);
+  border-left: 4px solid var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-weight: 500;
+}
+.alert--info { border-color: var(--route); background: #eaf1fd; color: var(--ink); }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: calc(var(--space) * 3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+}

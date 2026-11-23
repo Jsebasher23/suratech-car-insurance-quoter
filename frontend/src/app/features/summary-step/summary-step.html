@@ -1,0 +1,100 @@
+<h1 #heading tabindex="-1">{{ 'summary.title' | t }}</h1>
+<p class="lead">{{ 'summary.lead' | t }}</p>
+
+@switch (dataState()) {
+  @case ('loading') { <app-skeleton [count]="4" /> }
+  @case ('error') { <app-load-error (retry)="content.fields.reload(); content.plans.reload()" /> }
+  @default {
+    <div class="blocks">
+      @for (s of summary(); track s.section) {
+        <section class="panel block" [attr.data-testid]="'summary-' + s.section" [attr.aria-labelledby]="'sum-' + s.section">
+          <header class="block__head">
+            <h2 [id]="'sum-' + s.section">{{ sectionLabel[s.section] | t }}</h2>
+            <button type="button" class="btn btn--link" (click)="go('data')" data-testid="edit-data">{{ 'summary.edit' | t }}</button>
+          </header>
+          <dl class="rows">
+            @for (r of s.rows; track r.key) {
+              <div class="row">
+                <dt>{{ r.label }}</dt>
+                <dd [attr.data-testid]="'value-' + r.key" [class.mono]="r.masked">{{ r.value }}</dd>
+              </div>
+            }
+          </dl>
+        </section>
+      }
+
+      @if (plan(); as p) {
+        <section class="panel block block--plan" aria-labelledby="sum-plan" data-testid="summary-plan">
+          <header class="block__head">
+            <h2 id="sum-plan">{{ 'summary.plan' | t }}</h2>
+            <button type="button" class="btn btn--link" (click)="go('plans')" data-testid="change-plan">{{ 'summary.changePlan' | t }}</button>
+          </header>
+          <p class="plan-name">{{ p.name }}</p>
+          @if (country(); as c) {
+            <p class="total">
+              <span>{{ 'summary.total' | t }}</span>
+              <strong data-testid="summary-price">{{ p.finalPrice | money: c.currency : c.numberLocale }}</strong>
+            </p>
+          }
+        </section>
+      }
+    </div>
+
+    <section class="panel terms" aria-labelledby="terms-title" data-testid="terms">
+      @switch (terms.state().status) {
+        @case ('loading') { <app-skeleton [count]="2" /> }
+        @case ('error') { <app-load-error (retry)="terms.reload()" /> }
+        @default {
+          @if (terms.value(); as t) {
+            <h2 id="terms-title">{{ t.title }}</h2>
+            <p class="terms__version">{{ 'summary.terms.version' | t: { version: t.version } }}</p>
+            <div class="terms__body" tabindex="0" [attr.aria-label]="t.title" data-testid="terms-body">
+              @for (para of t.paragraphs; track $index) { <p>{{ para }}</p> }
+            </div>
+            <div class="accept">
+              <input id="accept-terms" type="checkbox" [checked]="store.termsAccepted()" (change)="onAccept($event)"
+                [disabled]="store.isProcessing()" data-testid="accept-terms" />
+              <label for="accept-terms">{{ 'summary.terms.accept' | t }}</label>
+            </div>
+          } @else {
+            <h2 id="terms-title" class="visually-hidden">{{ 'summary.terms.accept' | t }}</h2>
+            <p class="alert" role="alert" data-testid="terms-missing">{{ 'summary.terms.missing' | t }}</p>
+          }
+        }
+      }
+    </section>
+
+    <section class="panel pay" aria-labelledby="pay-title">
+      <h2 id="pay-title" class="visually-hidden">{{ 'summary.pay' | t: { price: priceLabel() } }}</h2>
+      <div class="sandbox">
+        <label for="sandbox">{{ 'summary.sandbox.label' | t }}</label>
+        <select id="sandbox" class="control" (change)="onOutcome($event)" [disabled]="store.isProcessing()" data-testid="sandbox-outcome" aria-describedby="sandbox-hint">
+          <option value="approve" [selected]="outcome() === 'approve'">{{ 'summary.sandbox.approve' | t }}</option>
+          <option value="decline" [selected]="outcome() === 'decline'">{{ 'summary.sandbox.decline' | t }}</option>
+        </select>
+        <p id="sandbox-hint" class="sandbox__hint">{{ 'summary.sandbox.hint' | t }}</p>
+      </div>
+
+      @if (store.payment().error; as err) {
+        <p #payError class="alert" role="alert" tabindex="-1" data-testid="payment-error">
+          {{ (err === 'declined' ? 'summary.payment.declined' : 'summary.payment.failed') | t }}
+        </p>
+      }
+
+      <div class="actions">
+        <button type="button" class="btn btn--ghost" (click)="go('plans')" [disabled]="store.isProcessing()">{{ 'wizard.back' | t }}</button>
+        @if (!store.termsAccepted() && terms.value()) {
+          <span class="hint" id="pay-hint">{{ 'summary.acceptToPay' | t }}</span>
+        }
+        <button type="button" class="btn btn--pay" data-testid="pay" (click)="pay()" [disabled]="!canPay()"
+          [attr.aria-busy]="store.isProcessing()" [attr.aria-describedby]="canPay() ? null : 'pay-hint'">
+          @if (store.isProcessing()) {
+            <span class="spinner" aria-hidden="true"></span>{{ 'summary.processing' | t }}
+          } @else {
+            {{ 'summary.pay' | t: { price: priceLabel() } }}
+          }
+        </button>
+      </div>
+    </section>
+  }
+}

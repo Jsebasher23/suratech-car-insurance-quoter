@@ -1,0 +1,32 @@
+<a class="skip" href="#main">{{ 'app.skipToContent' | t }}</a>
+
+<header class="top no-print">
+  <div class="top__inner">
+    <a routerLink="/" class="brand" data-testid="brand">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 2 4 7v8c0 7.5 5.1 13.2 12 15 6.9-1.8 12-7.5 12-15V7L16 2Z" fill="currentColor" />
+        <path d="M13 26 15 8h2l2 18" fill="none" stroke="#142342" stroke-width="2.4" stroke-dasharray="3 3" />
+      </svg>
+      <span class="brand__name">{{ 'app.brand' | t }}</span>
+      <span class="brand__tag">{{ 'app.tagline' | t }}</span>
+    </a>
+
+    <div class="top__tools">
+      @if (ctx.country(); as c) {
+        <a routerLink="/" class="market" data-testid="current-country" [attr.aria-label]="('app.changeCountry' | t) + ': ' + c.name">
+          <span aria-hidden="true">{{ c.flag }}</span>
+          <span class="market__name">{{ c.name }}</span>
+        </a>
+      }
+      <app-language-switcher />
+    </div>
+  </div>
+</header>
+
+<main id="main" class="main">
+  <router-outlet />
+</main>
+
+<footer class="foot">
+  <p>{{ 'app.footer' | t }}</p>
+</footer>
