@@ -30,7 +30,7 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
           <select class="control" [id]="id()" [formControl]="c" [attr.aria-invalid]="invalid" [attr.aria-required]="f.required" [attr.aria-describedby]="describedBy()">
             <option [ngValue]="null" disabled>{{ 'data.selectPlaceholder' | t }}</option>
             @for (o of f.options; track o.value) {
-              <option [ngValue]="o.value">{{ o.label }}</option>
+              <option [value]="o.value">{{ o.label }}</option>
             }
           </select>
         }

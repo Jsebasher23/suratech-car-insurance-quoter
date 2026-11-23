@@ -1,0 +1,17 @@
+❯ Building...
+✔ Building...
+Initial chunk files                            | Names                                       |  Raw size
+
+                                               | Initial total                               | 220.07 kB
+
+Application bundle generation complete. [4.717 seconds] - 2026-11-22T20:51:44.111Z
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/home/claude/car-insurance-quoter/frontend[39m
+
+
+[2m Test Files [22m [1m[32m19 passed[39m[22m[90m (19)[39m
+[2m      Tests [22m [1m[32m121 passed[39m[22m[90m (121)[39m
+[2m   Start at [22m 15:51:44
+[2m   Duration [22m 2.22s[2m (transform 362ms, setup 303ms, import 504ms, tests 798ms, environment 454ms)[22m
+

@@ -78,7 +78,7 @@ export class DataStep {
   private readonly clock = inject(Clock);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
-  private readonly host = inject(ElementRef<HTMLElement>);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly heading = viewChild<ElementRef<HTMLElement>>('heading');
 
   protected readonly submitted = signal(false);
@@ -138,7 +138,7 @@ export class DataStep {
     const ordered = this.sections().flatMap((s) => s.fields);
     const first = ordered.find((f) => fg?.controls[f.key]?.invalid) ?? fields[0];
     if (!first) return;
-    const el = (this.host.nativeElement as HTMLElement).querySelector<HTMLElement>(`#f-${CSS.escape(first.key)}`);
-    el?.focus();
+    // getElementById: no selector escaping needed for CMS-defined keys (CSS.escape is not universal)
+    this.host.nativeElement.ownerDocument.getElementById(`f-${first.key}`)?.focus();
   }
 }

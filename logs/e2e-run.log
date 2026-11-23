@@ -1,0 +1,14 @@
+
+Running 9 tests using 1 worker
+
+  ✓  1 [desktop-chromium] › e2e/edge-cases.spec.ts:4:1 › US-01-AC-03/04 invalid field shows its Strapi message and blocks the step (1.7s)
+  ✓  2 [desktop-chromium] › e2e/edge-cases.spec.ts:14:1 › US-01-AC-09 a minor cannot continue (1.6s)
+  ✓  3 [desktop-chromium] › e2e/edge-cases.spec.ts:24:1 › US-02-AC-07 shows a message when the country has no active plans (1.7s)
+  ✓  4 [desktop-chromium] › e2e/edge-cases.spec.ts:33:1 › US-01-AC-11 Strapi down → error with retry that recovers (1.0s)
+  ✓  5 [desktop-chromium] › e2e/edge-cases.spec.ts:43:1 › US-01-AC-13 unknown country shows the picker (667ms)
+  ✓  6 [desktop-chromium] › e2e/edge-cases.spec.ts:49:1 › US-02-AC-11 deep link to plans without data goes back to step 1 (1.4s)
+  ✓  7 [desktop-chromium] › e2e/keyboard.spec.ts:13:1 › US-01-AC-12 completes the Chile wizard using only the keyboard (4.0s)
+  ✓  8 [desktop-chromium] › e2e/quote-flow.spec.ts:5:3 › Full quote flow — Colombia › US-01..03 happy path with decline-then-retry, back navigation and language switch (5.6s)
+  ✓  9 [mobile-chromium] › e2e/quote-flow.spec.ts:5:3 › Full quote flow — Colombia › US-01..03 happy path with decline-then-retry, back navigation and language switch (6.0s)
+
+  9 passed (25.5s)

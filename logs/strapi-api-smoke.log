@@ -1,0 +1,9 @@
+# API smoke after first boot (2026-11-22T15:38:04-05:00)
+## GET /api/countries?locale=pt
+{"data":[{"id":6,"documentId":"f6sko2dmqgfwxspkmpdht990","code":"CO","name":"Colômbia","currency":"COP","numberLocale":"es-CO","legalAge":18,"flag":"🇨🇴","order":10,"createdAt":"2026-11-22T20:36:54.226Z","updatedAt":"2026-11-22T20:36:54.226Z","publishedAt":"2026-11-22T20:36:54.265Z","locale":"pt"},{"id":12,"documentId":"gtfnba9605sw1nae770dk3qj","code":"CL","name":"Chile","currency":"CLP","numberLocale":"es-CL","legalAge":18,"flag":"🇨🇱","order":20,"createdAt":"2026-11-22T20:36:56.081Z","updatedAt":"2026-11-22T20:36:56.081Z","publishedAt":"2026-11-22T20:36:56.124Z","locale":"pt"}],"meta":{"pagination":{"page":1,"pageSize":25,"pageCount":1,"total":2}}}
+## GET plans CO en (active only, published only)
+{"data":[{"order":10,"id":5,"documentId":"c9fxs6eq2ydouxx3y7c2588a","code":"CO-BASIC","name":"Basic","active":true},{"order":20,"id":11,"documentId":"nfcse4ud505de6jphnzaycf2","code":"CO-PLUS","name":"Plus","active":true},{"order":30,"id":17,"documentId":"i4fe37skbhviy7zc81dcx2i9","code":"CO-FULL","name":"Full Coverage","active":true}],"meta":{"pagination":{"page":1,"pageSize":25,"pageCount":1,"total":3}}}
+## POST /api/plans (must fail)
+Method Not Allowed HTTP 405
+## POST /api/auth/local/register (must fail)
+{"data":null,"error":{"status":403,"name":"ForbiddenError","message":"Forbidden","details":{}}} HTTP 403

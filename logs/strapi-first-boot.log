@@ -1,0 +1,280 @@
+- Building build context
+
+✔ Building build context (230ms)
+- Creating admin
+✔ Creating admin (28065ms)
+- Loading Strapi
+[2026-11-22 15:36:52.894] [32minfo[39m: [internal migration]: migrating 5.0.0-rename-identifiers-longer-than-max-length
+[2026-11-22 15:36:52.918] [32minfo[39m: [internal migration]: migrated 5.0.0-rename-identifiers-longer-than-max-length (0.025s)
+[2026-11-22 15:36:52.919] [32minfo[39m: [internal migration]: migrating 5.0.0-02-created-document-id
+[2026-11-22 15:36:52.931] [32minfo[39m: [internal migration]: migrated 5.0.0-02-created-document-id (0.012s)
+[2026-11-22 15:36:52.931] [32minfo[39m: [internal migration]: migrating 5.0.0-03-created-locale
+[2026-11-22 15:36:52.940] [32minfo[39m: [internal migration]: migrated 5.0.0-03-created-locale (0.009s)
+[2026-11-22 15:36:52.940] [32minfo[39m: [internal migration]: migrating 5.0.0-04-created-published-at
+[2026-11-22 15:36:52.945] [32minfo[39m: [internal migration]: migrated 5.0.0-04-created-published-at (0.005s)
+[2026-11-22 15:36:52.946] [32minfo[39m: [internal migration]: migrating 5.0.0-05-drop-slug-fields-index
+[2026-11-22 15:36:52.950] [32minfo[39m: [internal migration]: migrated 5.0.0-05-drop-slug-fields-index (0.004s)
+[2026-11-22 15:36:52.950] [32minfo[39m: [internal migration]: migrating 5.0.0-06-add-document-id-indexes
+[2026-11-22 15:36:52.952] [32minfo[39m: [internal migration]: migrated 5.0.0-06-add-document-id-indexes (0.002s)
+[2026-11-22 15:36:52.952] [32minfo[39m: [internal migration]: migrating core::5.0.0-discard-drafts
+[2026-11-22 15:36:52.953] [32minfo[39m: [discard-drafts] Migration started
+[2026-11-22 15:36:52.955] [32minfo[39m: [discard-drafts] Stage 1/5 – cloning published entries into draft rows
+[2026-11-22 15:36:52.955] [32minfo[39m: [discard-drafts] Stage 1/5 complete
+[2026-11-22 15:36:52.955] [32minfo[39m: [discard-drafts] Stage 2/5 – copying relations and components to drafts
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 2/5 complete
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 3/5 – fixing existing draft relations
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 3/5 complete
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 4/5 – fixing existing draft component relations
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 4/5 complete
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 4b/5 – fixing published component relations to published targets
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 4b/5 complete
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 5/5 – updating foreign key references to draft targets
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Stage 5/5 complete
+[2026-11-22 15:36:52.956] [32minfo[39m: [discard-drafts] Migration completed successfully
+[2026-11-22 15:36:52.957] [32minfo[39m: [internal migration]: migrated core::5.0.0-discard-drafts (0.005s)
+[2026-11-22 15:36:52.957] [32minfo[39m: [internal migration]: migrating admin::migrate-prefered-language-dk-to-da
+[2026-11-22 15:36:52.959] [32minfo[39m: [internal migration]: migrated admin::migrate-prefered-language-dk-to-da (0.002s)
+[2026-11-22 15:36:52.959] [32minfo[39m: [internal migration]: migrating upload::unsign-richtext-and-blocks-urls
+[2026-11-22 15:36:52.961] [32minfo[39m: [internal migration]: migrated upload::unsign-richtext-and-blocks-urls (0.002s)
+[2026-11-22 15:36:53.791] [33mwarn[39m: [email]: The "sendmail" email provider is still supported, but for most production setups that use a dedicated SMTP relay, consider switching to @strapi/provider-email-nodemailer (set `provider` to `"nodemailer"` in your email plugin config). This message is only shown in development.
+[2026-11-22 15:36:54.198] [32minfo[39m: [seed] Seeding fictitious data for CO and CL in es/en/pt …
+[2026-11-22 15:36:56.055] [32minfo[39m: [seed] CO: 12 fields, 5 plans, terms ✔
+[2026-11-22 15:36:57.539] [32minfo[39m: [seed] CL: 11 fields, 4 plans, terms ✔
+[2026-11-22 15:36:57.540] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.callback
+[2026-11-22 15:36:57.544] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.connect
+[2026-11-22 15:36:57.546] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.forgotPassword
+[2026-11-22 15:36:57.548] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.resetPassword
+[2026-11-22 15:36:57.551] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.register
+[2026-11-22 15:36:57.553] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.emailConfirmation
+[2026-11-22 15:36:57.555] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.sendEmailConfirmation
+[2026-11-22 15:36:57.558] [33mwarn[39m: [permissions] Removing non-allowed Public permission: plugin::users-permissions.auth.refresh
+[2026-11-22 15:36:57.581] [32minfo[39m: [permissions] Public role = 8 read-only actions
+✔ Loading Strapi (5527ms)
+- Generating types
+✔ Generating types (382ms)
+- Compiling TS
+- Cleaning dist dir /home/claude/car-insurance-quoter/backend/dist
+✔ Cleaning dist dir (7ms)
+✔ Compiling TS (2383ms)
+
+ Project information
+
+[90m╭────────────────────[39m[90m┬──────────────────────────────────────────────────╮[39m
+[90m│[39m Time               [90m│[39m Sun Nov 22 2026 15:37:00 GMT-0500 (Colombia Sta… [90m│[39m
+[90m│[39m Launched in        [90m│[39m 8318 ms                                          [90m│[39m
+[90m│[39m Environment        [90m│[39m development                                      [90m│[39m
+[90m│[39m Process PID        [90m│[39m 1087                                             [90m│[39m
+[90m│[39m Version            [90m│[39m 5.63.0 (node v22.23.5)                           [90m│[39m
+[90m│[39m Plan               [90m│[39m Community                                        [90m│[39m
+[90m│[39m Database           [90m│[39m sqlite                                           [90m│[39m
+[90m│[39m Database name      [90m│[39m .tmp/data.db                                     [90m│[39m
+[90m╰────────────────────[39m[90m┴──────────────────────────────────────────────────╯[39m
+
+ Actions available
+
+One more thing...
+Create your first administrator 💻 by going to the administration panel at:
+
+[90m┌─────────────────────────────┐[39m
+[90m│[39m http://localhost:1337/admin [90m│[39m
+[90m└─────────────────────────────┘[39m
+
+[2026-11-22 15:37:00.703] [32minfo[39m: Strapi started successfully
+[2026-11-22 15:37:52.273] [32mhttp[39m: GET /api/countries?locale=pt (25 ms) 200
+[2026-11-22 15:37:52.360] [32mhttp[39m: POST /api/plans (14 ms) 405
+[2026-11-22 15:37:56.027] [32mhttp[39m: GET /api/plans?filters[country][code][$eq]=CO&filters[active][$eq]=true&locale=en&sort[0]=order:asc&populate=* (28 ms) 200
+[2026-11-22 15:37:56.069] [32mhttp[39m: GET /api/form-fields?filters[country][code][$eq]=CL&locale=pt&sort[0]=order:asc&populate=*&pagination[pageSize]=100 (26 ms) 200
+[2026-11-22 15:38:04.725] [32mhttp[39m: GET /api/countries?locale=pt (4 ms) 200
+[2026-11-22 15:38:04.744] [32mhttp[39m: GET /api/plans?filters[country][code][$eq]=CO&filters[active][$eq]=true&locale=en&sort[0]=order:asc&fields[0]=code&fields[1]=name&fields[2]=active (11 ms) 200
+[2026-11-22 15:38:04.751] [32mhttp[39m: POST /api/plans (1 ms) 405
+[2026-11-22 15:38:04.760] [32mhttp[39m: POST /api/auth/local/register (3 ms) 403
+[2026-11-22 15:47:21.792] [32mhttp[39m: GET /api/countries (10 ms) 200
+[2026-11-22 15:47:42.573] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:47:42.596] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=en&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:47:43.018] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (40 ms) 200
+[2026-11-22 15:47:43.082] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (47 ms) 200
+[2026-11-22 15:47:43.110] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (24 ms) 200
+[2026-11-22 15:47:43.140] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (24 ms) 200
+[2026-11-22 15:47:43.160] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:47:43.182] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=en&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:48:19.814] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:48:20.235] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (17 ms) 200
+[2026-11-22 15:48:20.285] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (40 ms) 200
+[2026-11-22 15:48:20.303] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:48:21.645] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (11 ms) 200
+[2026-11-22 15:48:21.660] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=en&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:48:21.803] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (15 ms) 200
+[2026-11-22 15:48:21.824] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (17 ms) 200
+[2026-11-22 15:48:21.837] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:48:21.851] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (11 ms) 200
+[2026-11-22 15:48:21.860] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:48:21.884] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=en&pagination%5BpageSize%5D=100 (17 ms) 200
+[2026-11-22 15:48:22.018] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:48:22.033] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=pt&pagination%5BpageSize%5D=100 (11 ms) 200
+[2026-11-22 15:48:22.077] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (27 ms) 200
+[2026-11-22 15:48:22.096] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=pt&pagination%5BpageSize%5D=100 (15 ms) 200
+[2026-11-22 15:48:22.113] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:48:22.123] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:48:22.132] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=pt&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:48:22.156] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=pt&pagination%5BpageSize%5D=100 (17 ms) 200
+[2026-11-22 15:52:38.665] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:52:38.969] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (22 ms) 200
+[2026-11-22 15:52:39.275] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (14 ms) 200
+[2026-11-22 15:52:39.287] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:52:39.295] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:53:40.303] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:53:40.648] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:53:40.918] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (61 ms) 200
+[2026-11-22 15:53:40.959] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (38 ms) 200
+[2026-11-22 15:53:40.993] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (21 ms) 200
+[2026-11-22 15:54:42.312] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:54:42.716] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:54:42.956] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (26 ms) 200
+[2026-11-22 15:54:42.963] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:55:43.842] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:55:44.185] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (34 ms) 200
+[2026-11-22 15:55:44.210] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:55:44.302] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (23 ms) 200
+[2026-11-22 15:55:44.858] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:55:45.547] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:55:45.851] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:55:45.980] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:55:46.001] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (14 ms) 200
+[2026-11-22 15:55:46.015] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:55:46.317] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:55:46.465] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (15 ms) 200
+[2026-11-22 15:55:46.484] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (16 ms) 200
+[2026-11-22 15:55:46.493] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:55:47.063] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:55:47.577] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (19 ms) 200
+[2026-11-22 15:55:47.749] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (31 ms) 200
+[2026-11-22 15:55:47.777] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (17 ms) 200
+[2026-11-22 15:55:47.785] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:55:50.525] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:55:50.813] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:55:51.134] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (26 ms) 200
+[2026-11-22 15:55:51.156] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (14 ms) 200
+[2026-11-22 15:55:51.164] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:56:52.133] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:56:52.487] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:56:52.670] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (15 ms) 200
+[2026-11-22 15:56:52.681] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:56:52.692] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:04.510] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:04.898] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (33 ms) 200
+[2026-11-22 15:58:05.076] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:05.093] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:58:05.119] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (19 ms) 200
+[2026-11-22 15:58:06.344] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:06.698] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:06.919] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (31 ms) 200
+[2026-11-22 15:58:06.987] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (48 ms) 200
+[2026-11-22 15:58:06.998] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:08.065] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:08.461] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:08.675] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (18 ms) 200
+[2026-11-22 15:58:08.688] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (11 ms) 200
+[2026-11-22 15:58:09.774] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:10.002] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (18 ms) 200
+[2026-11-22 15:58:10.040] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:10.153] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (27 ms) 200
+[2026-11-22 15:58:10.685] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:11.384] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:11.644] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:11.924] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (44 ms) 200
+[2026-11-22 15:58:11.936] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:11.945] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:12.138] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:58:12.337] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:12.360] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:12.394] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:12.895] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:13.287] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:13.463] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (32 ms) 200
+[2026-11-22 15:58:13.475] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:13.495] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:58:16.724] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:17.031] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:17.327] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (19 ms) 200
+[2026-11-22 15:58:17.335] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:17.348] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (11 ms) 200
+[2026-11-22 15:58:18.937] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:18.969] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=en&pagination%5BpageSize%5D=100 (16 ms) 200
+[2026-11-22 15:58:19.093] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (99 ms) 200
+[2026-11-22 15:58:19.134] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:19.160] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (21 ms) 200
+[2026-11-22 15:58:19.193] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=en&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:58:19.394] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (188 ms) 200
+[2026-11-22 15:58:19.435] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:24.399] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:24.710] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:24.851] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:58:24.865] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:24.876] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:25.969] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:25.991] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=en&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:26.006] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:26.031] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:26.042] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:26.060] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=en&pagination%5BpageSize%5D=100 (14 ms) 200
+[2026-11-22 15:58:26.073] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:26.080] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:36.551] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:36.890] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:37.050] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (21 ms) 200
+[2026-11-22 15:58:37.069] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:58:37.101] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:38.171] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:38.518] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (3 ms) 200
+[2026-11-22 15:58:38.689] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (16 ms) 200
+[2026-11-22 15:58:38.712] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (17 ms) 200
+[2026-11-22 15:58:38.726] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:39.819] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (19 ms) 200
+[2026-11-22 15:58:40.162] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:40.402] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (33 ms) 200
+[2026-11-22 15:58:40.412] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:41.572] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:41.877] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (28 ms) 200
+[2026-11-22 15:58:41.896] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:42.020] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (46 ms) 200
+[2026-11-22 15:58:42.598] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (3 ms) 200
+[2026-11-22 15:58:43.324] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:43.609] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:43.791] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (16 ms) 200
+[2026-11-22 15:58:43.809] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (14 ms) 200
+[2026-11-22 15:58:43.817] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:44.013] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:44.194] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (16 ms) 200
+[2026-11-22 15:58:44.216] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (12 ms) 200
+[2026-11-22 15:58:44.225] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:44.715] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:45.047] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:45.190] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (15 ms) 200
+[2026-11-22 15:58:45.208] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (15 ms) 200
+[2026-11-22 15:58:45.221] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CL&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:58:48.750] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:49.082] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (11 ms) 200
+[2026-11-22 15:58:49.230] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (14 ms) 200
+[2026-11-22 15:58:49.240] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:49.245] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (3 ms) 200
+[2026-11-22 15:58:50.482] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:50.490] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=en&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:50.549] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (19 ms) 200
+[2026-11-22 15:58:50.559] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:50.577] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:50.588] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:50.595] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:50.601] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=en&pagination%5BpageSize%5D=100 (5 ms) 200
+[2026-11-22 15:58:55.093] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:55.489] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:55.688] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (13 ms) 200
+[2026-11-22 15:58:55.704] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (10 ms) 200
+[2026-11-22 15:58:55.714] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (7 ms) 200
+[2026-11-22 15:58:57.088] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=es&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:57.100] [32mhttp[39m: GET /api/countries?sort%5B0%5D=order:asc&locale=en&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:57.149] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (9 ms) 200
+[2026-11-22 15:58:57.158] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=en&pagination%5BpageSize%5D=100 (6 ms) 200
+[2026-11-22 15:58:57.165] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=en&pagination%5BpageSize%5D=100 (4 ms) 200
+[2026-11-22 15:58:57.176] [32mhttp[39m: GET /api/form-fields?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:57.191] [32mhttp[39m: GET /api/plans?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&filters%5Bactive%5D%5B$eq%5D=true&sort%5B0%5D=order:asc&populate=*&locale=es&pagination%5BpageSize%5D=100 (8 ms) 200
+[2026-11-22 15:58:57.197] [32mhttp[39m: GET /api/legal-terms?filters%5Bcountry%5D%5Bcode%5D%5B$eq%5D=CO&sort%5B0%5D=updatedAt:desc&locale=es&pagination%5BpageSize%5D=100 (4 ms) 200
