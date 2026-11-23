@@ -1,0 +1,44 @@
+# One command: `docker compose up --build`
+#   App (both countries):  http://localhost:8080   (→ /co or /cl)
+#   Strapi admin:          http://localhost:1337/admin  (create the first admin on first visit)
+# Seed data for CO and CL (es/en/pt) is loaded automatically on the first boot.
+services:
+  strapi:
+    build: ./backend
+    environment:
+      NODE_ENV: production
+      # Browser traffic is same-origin through nginx (/api), so CORS stays closed (ADR-0004, RV-14).
+      CORS_ORIGINS: ""
+    ports:
+      - "1337:1337"
+    volumes:
+      - strapi-data:/app/.tmp
+    restart: unless-stopped
+
+  web:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      strapi:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Optional: `docker compose --profile e2e run --rm e2e`
+  e2e:
+    profiles: ["e2e"]
+    image: mcr.microsoft.com/playwright:v1.65.1-noble
+    working_dir: /work
+    volumes:
+      - ./frontend:/work
+      - /work/node_modules # RV-19: keep the container's Linux deps out of the host folder
+    environment:
+      E2E_BASE_URL: http://web
+      CI: "1"
+    command: ["sh", "-c", "npm ci --no-audit --no-fund && npx playwright test --project=desktop-chromium"]
+    depends_on:
+      web:
+        condition: service_started
+
+volumes:
+  strapi-data:

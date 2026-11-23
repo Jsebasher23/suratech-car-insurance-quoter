@@ -9,7 +9,8 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewar
   {
     name: 'strapi::cors',
     config: {
-      origin: env.array('CORS_ORIGINS', ['http://localhost:4200', 'http://localhost:8080']),
+      // Dev default allows the Angular dev server; production compose sets CORS_ORIGINS to empty (same-origin).
+      origin: env.array('CORS_ORIGINS', ['http://localhost:4200']).filter(Boolean),
       methods: ['GET', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Accept', 'Origin'],
     },

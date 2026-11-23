@@ -22,8 +22,9 @@ disabled for Public (no end-user accounts in scope), upload `find` not granted (
 Quotes and payments are **not** persisted in Strapi (front-end persistence, ADR-0005), so the
 browser never needs write access.
 
-CORS: `config/middlewares.ts` allows only the configured `FRONTEND_ORIGIN` (dev server), the
-production path is same-origin through nginx. Admin panel is exposed on its own port for the
+CORS: `config/middlewares.ts` allows only the origins in `CORS_ORIGINS` (default: the Angular dev
+server); production compose sets it empty because the browser reaches Strapi same-origin through nginx.
+nginx sends CSP and security headers on every response (server-level `add_header`). Admin panel is exposed on its own port for the
 business team; its JWT/salts come from environment variables generated per environment
 (`.env.example` contains placeholders only).
 
