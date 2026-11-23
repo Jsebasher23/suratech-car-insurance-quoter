@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legal_terms",
+  "info": {
+    "singularName": "legal-term",
+    "pluralName": "legal-terms",
+    "displayName": "Legal terms",
+    "description": "Terms and conditions per country (US-03). Plain text; blank lines separate paragraphs."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "body": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "required": true,
+      "default": "1.0",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "legalTerms",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    }
+  }
+}

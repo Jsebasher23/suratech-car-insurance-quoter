@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_form_validation",
+  "info": {
+    "displayName": "Validation",
+    "description": "Typed validation rules; see skill country-content-model for semantics."
+  },
+  "options": {},
+  "attributes": {
+    "minLength": {
+      "type": "integer",
+      "min": 0
+    },
+    "maxLength": {
+      "type": "integer",
+      "min": 0
+    },
+    "min": {
+      "type": "decimal"
+    },
+    "max": {
+      "type": "decimal"
+    },
+    "pattern": {
+      "type": "string"
+    },
+    "minYearOffset": {
+      "type": "integer"
+    },
+    "maxYearOffset": {
+      "type": "integer"
+    },
+    "minAgeYears": {
+      "type": "integer",
+      "min": 0
+    },
+    "validator": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "rut",
+        "co-document",
+        "plate-co",
+        "plate-cl",
+        "email",
+        "phone"
+      ],
+      "default": "none"
+    }
+  }
+}

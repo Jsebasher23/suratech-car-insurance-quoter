@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countries",
+  "info": {
+    "singularName": "country",
+    "pluralName": "countries",
+    "displayName": "Country",
+    "description": "Market where the product is sold. ADR-0001: country is data, not code."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 2,
+      "minLength": 2,
+      "regex": "^[A-Z]{2}$",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "COP",
+        "CLP"
+      ],
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "numberLocale": {
+      "type": "string",
+      "required": true,
+      "default": "es-CO",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "legalAge": {
+      "type": "integer",
+      "required": true,
+      "default": 18,
+      "min": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "flag": {
+      "type": "string",
+      "maxLength": 8,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "formFields": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::form-field.form-field",
+      "mappedBy": "country"
+    },
+    "plans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::plan.plan",
+      "mappedBy": "country"
+    },
+    "legalTerms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::legal-term.legal-term",
+      "mappedBy": "country"
+    }
+  }
+}

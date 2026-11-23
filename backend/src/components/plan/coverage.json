@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_plan_coverage",
+  "info": {
+    "displayName": "Coverage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "string"
+    }
+  }
+}
