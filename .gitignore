@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.angular/
+backend/.tmp/
+backend/build/
+backend/.strapi/
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep
+backend/types/generated/
+.env
+frontend/test-results/
+frontend/playwright-report/
+*.log.tmp

@@ -1,0 +1,55 @@
+---
+name: spec-authoring
+description: Template and procedure to turn a functional user story of this project into a verifiable spec with numbered ACs, gap analysis, data contract and traceability matrix. Use when creating or updating anything under docs/specs/.
+---
+
+# Spec authoring (project skill)
+
+## Why this skill exists
+User stories in this project are written by a non-technical business team. They describe
+the happy path well and the edges poorly. A spec here has one job: **make every promise
+testable and every ambiguity visible before code exists.**
+
+## Template (copy exactly — sections are parsed by reviewers)
+
+```markdown
+# US-XX — <title>
+Status: Draft | Approved (by <name>, <date>) | Superseded
+Story: docs/user-stories/US-XX.md · ADRs: ADR-NNNN, …
+
+## 1. Goal (1–2 sentences, user value)
+## 2. In scope / Out of scope
+## 3. Acceptance criteria
+| ID | Given / When / Then (single observable outcome) | Source | Test type |
+|----|---|---|---|
+| US-XX-AC-01 | … | story scenario "…" / gap G-02 / CLAUDE.md §3.8 | unit / component / e2e |
+## 4. Business rules (formalised)
+Each rule as a precise statement with boundaries: `0 ≤ vehicleAge ≤ 20` (inclusive), dates in
+the user's local calendar, etc.
+## 5. Gap analysis
+| Gap | Question the story does not answer | Decision (ASSUMPTION / NEEDS-ADR / ASK-PO) | Risk if wrong |
+## 6. Data contract (Strapi → Angular)
+Content type, field, type, localized?, required?, example.
+## 7. UX states
+loading · error (+retry) · empty · keyboard path · mobile layout · language switch
+## 8. Traceability (filled by test-engineer)
+| AC | Test file › test title | Status |
+```
+
+## Rules for good ACs
+- One observable outcome per AC. "and" in a Then → split it.
+- Name the boundary: *"year = currentYear + 1 is valid; currentYear + 2 is invalid"*.
+- Non-functional ACs are ACs too (keyboard, a11y labels, i18n, mobile).
+- Every Gherkin scenario of the story maps to ≥1 AC (write the scenario name in *Source*).
+
+## Gap-hunting checklist (ask each one)
+1. Boundaries — inclusive or exclusive? today vs. birthday? timezone?
+2. Multiplicity — what if 0, 1, many (e.g. two plans flagged *recommended*)?
+3. Content errors — what if Strapi returns an unknown field type, missing translation,
+   currency that does not match the country?
+4. Availability — Strapi down / slow? Partial data?
+5. Lifecycle — content changes while the user is mid-wizard? Data saved for a field that was
+   removed?
+6. Country & language — is the rule the same in CO and CL? Is the copy localized?
+7. Security & privacy — PII shown, stored, logged? Masking rule exact?
+8. Abuse — double submit, back button, refresh, deep link to step 3.
