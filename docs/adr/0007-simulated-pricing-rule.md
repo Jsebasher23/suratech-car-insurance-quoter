@@ -1,6 +1,6 @@
 # ADR-0007 — Simulated pricing rule
 
-- Status: Accepted (HC-2, 2026-11-22) · Specs: US-02-AC-09, US-02 G-07
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: US-02-AC-09, US-02 G-07
 
 ## Context
 The brief allows a simulated final price based on step-1 data, as long as it is documented.

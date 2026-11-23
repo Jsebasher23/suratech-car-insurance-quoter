@@ -1,6 +1,6 @@
 # ADR-0003 — Runtime UI translations with a typed signal-based I18nService
 
-- Status: Accepted (HC-2, 2026-11-22) · Specs: US-04-AC-01, -02, -06
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: US-04-AC-01, -02, -06
 
 ## Context
 UI chrome (buttons, step names, generic states) is not business content, must switch at runtime

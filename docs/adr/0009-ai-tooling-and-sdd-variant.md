@@ -1,6 +1,6 @@
 # ADR-0009 — AI tooling (Claude Code) and a lightweight in-repo SDD variant
 
-- Status: Accepted (HC-2, 2026-11-22)
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date)
 
 ## Context
 The brief requires subagents, skills, a context file, specs before code and traceable review,

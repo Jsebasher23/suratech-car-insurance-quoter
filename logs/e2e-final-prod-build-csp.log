@@ -1,0 +1,17 @@
+
+Running 12 tests using 1 worker
+
+  ✓   1 [desktop-chromium] › e2e/edge-cases.spec.ts:4:1 › US-01-AC-03/04 invalid field shows its Strapi message and blocks the step (1.4s)
+  ✓   2 [desktop-chromium] › e2e/edge-cases.spec.ts:14:1 › US-01-AC-09 a minor cannot continue (1.2s)
+  ✓   3 [desktop-chromium] › e2e/edge-cases.spec.ts:24:1 › US-02-AC-07 shows a message when the country has no active plans (1.2s)
+  ✓   4 [desktop-chromium] › e2e/edge-cases.spec.ts:33:1 › US-01-AC-11 Strapi down → error with retry that recovers (672ms)
+  ✓   5 [desktop-chromium] › e2e/edge-cases.spec.ts:43:1 › US-01-AC-13 unknown country shows the picker (420ms)
+  ✓   6 [desktop-chromium] › e2e/edge-cases.spec.ts:49:1 › US-02-AC-11 deep link to plans without data goes back to step 1 (970ms)
+  ✓   7 [desktop-chromium] › e2e/keyboard.spec.ts:13:1 › US-01-AC-12 completes the wizard with keyboard only (Chile; US-02-AC-06 arrow keys in the plan group) (4.0s)
+  ✓   8 [desktop-chromium] › e2e/production-smoke.spec.ts:8:1 › RV-01 global styles apply under the production CSP (657ms)
+  ✓   9 [desktop-chromium] › e2e/production-smoke.spec.ts:22:1 › RV-02 the skip link moves focus to the main content without leaving the wizard (601ms)
+  ✓  10 [desktop-chromium] › e2e/production-smoke.spec.ts:32:1 › RV-13 the page title names the step, country and brand in the active language (802ms)
+  ✓  11 [desktop-chromium] › e2e/quote-flow.spec.ts:9:3 › Full quote flow — Colombia › US-01..US-04 full flow CO (5.6s)
+  ✓  12 [mobile-chromium] › e2e/quote-flow.spec.ts:9:3 › Full quote flow — Colombia › US-01..US-04 full flow CO (5.8s)
+
+  12 passed (25.1s)

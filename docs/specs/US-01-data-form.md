@@ -1,6 +1,6 @@
 # US-01 — Policyholder and vehicle data form
 
-Status: Approved (HC-1 — candidate as Product Owner proxy, 2026-11-22)
+Status: Draft — **HC-1 sign-off pending** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
 Story: [docs/user-stories/US-01.md](../user-stories/US-01.md) · ADRs: [ADR-0001](../adr/0001-multi-country-content-strategy.md), [ADR-0002](../adr/0002-content-localization-strapi-i18n.md), [ADR-0005](../adr/0005-client-state-and-persistence.md), [ADR-0006](../adr/0006-dynamic-form-engine.md)
 
 ## 1. Goal

@@ -1,6 +1,6 @@
 # ADR-0001 — Multi-country content strategy: `country` as a relation + country in the URL path
 
-- Status: Accepted (HC-2, candidate as tech lead, 2026-11-22)
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date)
 - Deciders: architect agent (proposal), candidate (approval)
 - Specs: US-01-AC-01, US-01-AC-13, US-02-AC-01, US-03-AC-05 · Gaps: US-01 G-07
 

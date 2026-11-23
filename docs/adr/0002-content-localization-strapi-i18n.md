@@ -1,6 +1,6 @@
 # ADR-0002 — Content localization with the Strapi i18n plugin (language ≠ country)
 
-- Status: Accepted (HC-2, 2026-11-22)
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date)
 - Specs: US-04-AC-03, US-04-AC-05, US-04-AC-07, US-01-AC-07 · Origin: human request (US-04)
 
 ## Context

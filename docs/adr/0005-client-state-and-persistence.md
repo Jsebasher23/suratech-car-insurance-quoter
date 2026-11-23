@@ -1,6 +1,6 @@
 # ADR-0005 — Client state: one signal store persisted to `sessionStorage`
 
-- Status: Accepted (HC-2, 2026-11-22) · Specs: US-01-AC-06, US-02-AC-13, US-03-AC-08/10/11, US-04-AC-04
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: US-01-AC-06, US-02-AC-13, US-03-AC-08/10/11, US-04-AC-04
 
 ## Options
 | Option | Pros | Cons |

@@ -17,7 +17,7 @@ Spanish, English and Portuguese (runtime switch, same build).
 |---|---|---|
 | `docs/user-stories/` | Functional stories as received (input, read-only) | human (PO) |
 | `docs/specs/` | One spec per story — **source of truth** for code and tests | `spec-writer` |
-| `docs/adr/` | Architecture decisions (MADR 3 format) | `architect` |
+| `docs/adr/` | Architecture decisions (MADR 3 format; status changes only by a human at HC-2) | `architect` |
 | `docs/reviews/` | Code-review reports and their resolution | `code-reviewer` |
 | `docs/qa/` | QA handoff notes per increment | `qa-handoff` |
 | `backend/` | Strapi 5 project (content types, seed, permissions) | `implementer` |

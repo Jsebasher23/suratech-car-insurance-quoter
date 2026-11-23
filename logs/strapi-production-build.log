@@ -1,0 +1,12 @@
+
+> backend@0.1.0 build
+> strapi build
+
+- Compiling TS
+✔ Compiling TS (5215ms)
+- Building build context
+
+✔ Building build context (164ms)
+- Building admin panel
+
+✔ Building admin panel (29918ms)

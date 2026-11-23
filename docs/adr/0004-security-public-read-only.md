@@ -1,6 +1,6 @@
 # ADR-0004 — Security: no token in the browser, Public role read-only on 4 types
 
-- Status: Accepted (HC-2, 2026-11-22) · Specs: technical requirement "Security", US-03
+- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: technical requirement "Security", US-03
 
 ## Context
 The brief forbids any Strapi token with write permissions in the browser and requires minimal,

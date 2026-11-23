@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [desktop-chromium] › e2e/production-smoke.spec.ts:8:1 › RV-01 global styles apply under the production CSP (758ms)
+
+
+  1) [desktop-chromium] › e2e/production-smoke.spec.ts:8:1 › RV-01 global styles apply under the production CSP 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "absolute"
+    Received: "static"
+
+      14 |   await expect(page.getByTestId('data-form')).toBeVisible();
+      15 |   const hidden = page.locator('.visually-hidden').first();
+    > 16 |   expect(await hidden.evaluate((el) => getComputedStyle(el).position)).toBe('absolute');
+         |                                                                        ^
+      17 |   const btn = page.getByTestId('continue');
+      18 |   expect(await btn.evaluate((el) => getComputedStyle(el).borderRadius)).toBe('999px');
+      19 |   expect(violations).toEqual([]);
+        at /home/claude/car-insurance-quoter/frontend/e2e/production-smoke.spec.ts:16:72
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/production-smoke-RV-01-glo-7d956-ly-under-the-production-CSP-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/production-smoke-RV-01-glo-7d956-ly-under-the-production-CSP-desktop-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/production-smoke-RV-01-glo-7d956-ly-under-the-production-CSP-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/production-smoke-RV-01-glo-7d956-ly-under-the-production-CSP-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop-chromium] › e2e/production-smoke.spec.ts:8:1 › RV-01 global styles apply under the production CSP 
