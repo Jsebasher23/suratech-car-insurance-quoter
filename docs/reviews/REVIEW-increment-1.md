@@ -81,3 +81,40 @@ Reviewer: code-reviewer (claude-opus-5-5, independent, read-only on code) · Com
 | RV-28 | nit | frontend/src/app/features/plans-step/plans-step.ts:60,68 | WCAG 1.3.1 / heading structure | The plan cards now use `<h3>` "Coverages" / "Benefits" directly under the page `<h1>`, with no `<h2>` in between. Each card adds 2 of them, which gives 6 identical h3 entries in the screen-reader headings list for 3 plans. | Make each plan name an `<h2>` (inside the label, or with `aria-labelledby`) and keep the h3s under it. Or use `<p class="plan__h">` with the list's `aria-label`. | pending | pending |
 
 **Status after the second pass:** blocker **0**. Majors from the first pass: RV-01–RV-07 all fixed; RV-03 is fixed but has the follow-ups RV-21/RV-22. Still open: RV-08 and RV-09 partially fixed (minor), RV-10 not fixed (intentional, minor), and new findings RV-20–RV-28 (4 minor, 5 nit). **No open blocker or major remains**, so the review part of the DoD is met, provided the human triages RV-21/RV-22/RV-24 at HC-3.
+
+## HC-3 triage
+
+Decided by: JOHAN SEBASTIAN BELTRAN ARIAS · Date: 2026-11-22
+Options: Accepted (fix) · Rejected (with reason) · Deferred (with reason)
+
+### First pass
+- RV-01 blocker, CSP blocks styles in Docker — Decision: Update style-src in your container's web server or reverse proxy config to allow your stylesheet URLs (or 'unsafe-inline' / a nonce for inline styles), then rebuild/restart the container (docker compose up -d --build).
+- RV-02 major, skip link leaves the wizard — Decision: Point the skip link's href (and focus target) to the active wizard step's main content container inside the wizard rather than an outer page landmark.
+- RV-03 major, withdrawn plan could be paid — Decision: Disable selection and payment buttons when plan.status === 'WITHDRAWN', block checkout navigation via a route/step guard, and prompt the user to re-quote with a clear unavailable message.
+- RV-04 major, Docker files not committed — Decision: Stage and commit the required Dockerfile and compose/config files to Git (and remove or narrow any .gitignore rules excluding them) so builds and deployments are reproducible.
+- RV-05 major, currency hard-coded to COP/CLP — Decision: Resolve the currency from quote/locale/tenant context (with ISO 4217 formatting and fallback) instead of hard-coding 'COP' or 'CLP' in components or pipes.
+- RV-06 major, traceability pointed to non-existent tests — Decision: Update the traceability matrix to map each requirement only to existing, verified test IDs and remove or implement missing test references.
+- RV-07 major, some ACs without tests — Decision: Add unit/integration/e2e tests covering every unmapped acceptance criterion before closing the story.
+- RV-08 minor, legal age did not come from country — Decision: Derive the minimum legal driver age dynamically from the selected country/market configuration instead of hard-coding a single age.
+- RV-09 minor, language switch reloaded/flickered — Decision: Switch locale reactively in-memory (updating translation state without a full page reload or blank fallback state).
+- RV-10 minor, option values translated per locale — Decision: Keep canonical non-translated enum/code keys as select <option> values and translate only the visible display labels.
+- RV-11 minor, too many screen-reader alerts — Decision: Consolidate validation/status announcements into a single debounced or summary aria-live region instead of firing alerts per field/keystroke.
+- RV-12 minor, language button label — Decision: : Give the language switcher button a descriptive accessible label (aria-label) stating the action and target/current language rather than an ambiguous code.
+- RV-13 minor, fixed page title — Decision: Update document.title dynamically per wizard step and active locale using Angular's Title service or route titles.
+- RV-14 minor, security headers on JS/CSS — Decision: Apply security headers (such as X-Content-Type-Options: nosniff and Cache-Control) consistently across static JS/CSS asset locations in the web server config, keeping document-only headers like CSP on HTML responses.
+- RV-15 minor, no lint script — Decision: Add a lint script to package.json (e.g., ng lint / eslint) and wire it into CI checks.
+- RV-16 nit, effects re-running — Decision: Narrow reactive signal/observable dependencies inside effect() (using untracked() for non-triggering reads) so effects run only when their actual inputs change.
+- RV-17 nit, aria-describedby to missing element — Decision: Bind aria-describedby conditionally only when the corresponding error/hint element is rendered in the DOM.
+- RV-18 nit, invalid HTML in plan card — Decision: Fix invalid element nesting in the plan card template (e.g., avoid interactive elements inside <button>/<a> or block elements inside <p>/<span>) to produce valid HTML.
+- RV-19 nit, e2e service writes host node_modules — Decision: Isolate container node_modules in an anonymous/named Docker volume (or run read-only host mounts) so the e2e service never writes to the host's node_modules.
+
+### Second pass (new findings)
+- RV-20 minor, language switch still rebuilds form — Decision:Decouple form group initialization from locale changes so switching languages updates labels and error messages without recreating form controls or resetting user input/validation state.
+- RV-21 minor, price may change between check and pay — Decision: Lock or re-verify the quoted premium right before payment execution, and if the price changed, halt payment and require user confirmation of the updated price.
+- RV-22 minor, pays if the plan re-check fails — Decision: Fail closed on the pre-payment plan re-check so network/API errors block payment and show a retry message instead of proceeding to pay.
+- RV-23 nit, blur errors not announced — Decision: Trigger live-region announcement (or focus/assertive summary update) when a field becomes invalid on blur, not only on form submit.
+- RV-24 minor, agent edited .claude/ files — Decision: Revert unintended edits under .claude/ and restrict agent/tooling write permissions or paths to application source files only.
+- RV-25 nit, lint rule skips templates/core — Decision: Expand ESLint/lint target globs and configurations to include HTML templates and core/ modules.
+- RV-26 nit, "withdrawn" notice stays visible — Decision: Clear the "withdrawn" alert banner as soon as the user selects a valid active plan or completes a re-quote.
+- RV-27 nit, preview server crashes on bad URL — Decision: Catch malformed URI decoding errors (decodeURIComponent) in the preview server request handler and return a clean 400 Bad Request instead of crashing.
+- RV-28 nit, h3 headings in plan cards — Decision: Align heading hierarchy by promoting plan card titles to <h2> (or adding an intermediate <h2> section heading) so heading levels don't skip from <h1> to <h3>.
