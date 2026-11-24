@@ -1,6 +1,6 @@
 # ADR-0006 — Dynamic form engine: typed Reactive Forms + semantic `role` per field
 
-- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: US-01-AC-02..05, -14, US-02 G-07, US-03-AC-02 · Gap: US-01 G-03
+- Status: Proposed — **HC-2 Johan Sebastian Beltran 2026-11-22** (tech lead: name + date) · Specs: US-01-AC-02..05, -14, US-02 G-07, US-03-AC-02 · Gap: US-01 G-03
 
 ## Context
 Step 1 must be generated from Strapi with typed validations. Downstream logic (pricing, masking,

@@ -1,6 +1,6 @@
 # US-03 — Summary and payment
 
-Status: Draft — **HC-1 sign-off pending** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
+Status: Draft — **HC-1 Johan Sebastian Beltran 2026-11-22** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
 Story: [docs/user-stories/US-03.md](../user-stories/US-03.md) · ADRs: [ADR-0004](../adr/0004-security-public-read-only.md), [ADR-0005](../adr/0005-client-state-and-persistence.md), [ADR-0008](../adr/0008-simulated-payment-gateway.md)
 
 ## 1. Goal

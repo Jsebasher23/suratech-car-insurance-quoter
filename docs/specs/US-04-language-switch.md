@@ -1,6 +1,6 @@
 # US-04 — Language switch (ES / EN / PT)
 
-Status: Draft — **HC-1 sign-off pending** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
+Status: Draft — **HC-1 Johan Sebastian Beltrna 2026-11-22** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
 Story: [docs/user-stories/US-04-language.md](../user-stories/US-04-language.md) · ADRs: [ADR-0002](../adr/0002-content-localization-strapi-i18n.md), [ADR-0003](../adr/0003-runtime-ui-translations.md)
 
 ## 1. Goal

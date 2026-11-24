@@ -1,6 +1,6 @@
 # US-02 — Plan list
 
-Status: Draft — **HC-1 sign-off pending** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
+Status: Draft — **HC-1 Johan Sebastian Beltran 2026-11-22** (Product Owner: name + date). Implemented in the 2026-11-22 session at the operator's request before formal sign-off; see FLOW.md §4.
 Story: [docs/user-stories/US-02.md](../user-stories/US-02.md) · ADRs: [ADR-0001](../adr/0001-multi-country-content-strategy.md), [ADR-0002](../adr/0002-content-localization-strapi-i18n.md), [ADR-0007](../adr/0007-simulated-pricing-rule.md)
 
 ## 1. Goal

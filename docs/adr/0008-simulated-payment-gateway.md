@@ -1,6 +1,6 @@
 # ADR-0008 — Simulated payment gateway behind an injectable port
 
-- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: US-03-AC-07..11 · Gap: US-03 G-06
+- Status: Proposed — **HC-2 Johan Sebastian Beltran 2026-11-22** (tech lead: name + date) · Specs: US-03-AC-07..11 · Gap: US-03 G-06
 
 ## Options
 | Option | Pros | Cons |

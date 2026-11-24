@@ -1,6 +1,6 @@
 # ADR-0007 — Simulated pricing rule
 
-- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: US-02-AC-09, US-02 G-07
+- Status: Proposed — **HC-2 Johan Sebastian Beltran 2026-11-22** (tech lead: name + date) · Specs: US-02-AC-09, US-02 G-07
 
 ## Context
 The brief allows a simulated final price based on step-1 data, as long as it is documented.

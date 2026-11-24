@@ -1,6 +1,6 @@
 # ADR-0004 — Security: no token in the browser, Public role read-only on 4 types
 
-- Status: Proposed — **HC-2 sign-off pending** (tech lead: name + date) · Specs: technical requirement "Security", US-03
+- Status: Proposed — **HC-2 Johan Sebastian Beltran 2026-11-22** (tech lead: name + date) · Specs: technical requirement "Security", US-03
 
 ## Context
 The brief forbids any Strapi token with write permissions in the browser and requires minimal,
