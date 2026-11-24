@@ -15,7 +15,8 @@ WORKDIR /app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=1337 DATABASE_CLIENT=sqlite DATABASE_FILENAME=.tmp/data.db
 COPY --from=build /app /app
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh && mkdir -p /app/.tmp && chown -R node:node /app
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh \
+  && chmod +x /usr/local/bin/docker-entrypoint.sh && mkdir -p /app/.tmp && chown -R node:node /app
 USER node
 EXPOSE 1337
 HEALTHCHECK --interval=10s --timeout=5s --retries=30 --start-period=30s \
